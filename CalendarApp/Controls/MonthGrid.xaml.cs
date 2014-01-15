@@ -8,15 +8,36 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using CalendarApp.Utils;
+using CalendarApp.Models;
 
 namespace CalendarApp.Controls
 {
     public partial class MonthGrid : UserControl
     {
+        DateTime today;
+
+        DateTime startDate;
+
+        DateTime finishDate;
+
+        bool hasTodayCell;
+
         public MonthGrid()
         {
             InitializeComponent();
 
+            today = DateTime.Today;
+            startDate = new DateTime(today.Year, today.Month, 1);
+            finishDate = startDate.AddMonths(1).AddDays(-1);
+
+            hasTodayCell = true; // @@
+
+            CreateCells();
+        }
+
+        void CreateCells()
+        {
+            int day = 2 - CalendarSupport.GetDayNumber(startDate.DayOfWeek);
             for (int w = 0; w < CalendarSupport.WeeksInMonth; w++)
             {
                 for (int d = 0; d < CalendarSupport.DaysInWeek; d++)
@@ -25,13 +46,22 @@ namespace CalendarApp.Controls
                     Grid.SetRow(cell, w + 1);
                     Grid.SetColumn(cell, d);
 
+                    var model = new DayModel();
+
+                    if (day > 0 && day <= finishDate.Day)
+                        model.Day = day;
+                    else
+                        model.Day = 0;
+
+                    if (hasTodayCell && day == today.Day)
+                        model.IsToday = true;
+
+                    cell.DataContext = model;
+
                     MonthCellGrid.Children.Add(cell);
+                    day++;
                 }
             }
-        }
-
-        void CreateCells()
-        {
         }
     }
 }
