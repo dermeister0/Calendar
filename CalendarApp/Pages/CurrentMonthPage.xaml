@@ -16,7 +16,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:MonthGrid />
+        <controls:MonthGrid Name="CurrentMonthGrid" />
     </Grid>
 
 </phone:PhoneApplicationPage>

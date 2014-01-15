@@ -16,5 +16,14 @@ namespace CalendarApp.Pages
         {
             InitializeComponent();
         }
+
+        protected override void OnOrientationChanged(OrientationChangedEventArgs e)
+        {
+            base.OnOrientationChanged(e);
+
+            var minSize = Math.Min(ActualWidth, ActualHeight);
+            CurrentMonthGrid.Width = minSize;
+            CurrentMonthGrid.Height = minSize;
+        }
     }
 }
