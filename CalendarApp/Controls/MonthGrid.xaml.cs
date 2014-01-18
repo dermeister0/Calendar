@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using CalendarApp.Utils;
 using CalendarApp.Models;
+using System.Globalization;
 
 namespace CalendarApp.Controls
 {
@@ -37,6 +38,8 @@ namespace CalendarApp.Controls
 
         void CreateCells()
         {
+            CreateWeekDays();
+
             int day = 2 - CalendarSupport.GetDayNumber(startDate.DayOfWeek);
             for (int w = 0; w < CalendarSupport.WeeksInMonth; w++)
             {
@@ -61,6 +64,21 @@ namespace CalendarApp.Controls
                     MonthCellGrid.Children.Add(cell);
                     day++;
                 }
+            }
+        }
+
+        void CreateWeekDays()
+        {
+            var dayNames = CultureInfo.CurrentCulture.DateTimeFormat.ShortestDayNames;
+
+            for (int i = 0; i < CalendarSupport.DaysInWeek; i++)
+            {
+                var label = new TextBlock();
+                label.Text = dayNames[CalendarSupport.GetIndexOfDay(i)];
+                label.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+
+                Grid.SetColumn(label, i);
+                MonthCellGrid.Children.Add(label);
             }
         }
     }

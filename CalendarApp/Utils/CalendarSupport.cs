@@ -17,5 +17,12 @@ namespace CalendarApp.Utils
                 return 7;
             return (int)day;
         }
+
+        public static int GetIndexOfDay(int day)
+        {
+            if (day == 6)
+                return 0;
+            return day + 1;
+        }
     }
 }
