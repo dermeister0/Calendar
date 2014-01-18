@@ -15,6 +15,28 @@ namespace CalendarApp.Pages
         public CurrentMonthPage()
         {
             InitializeComponent();
+
+            var content = Application.Current.Host.Content;
+            var minSize = Math.Min(content.ActualWidth, content.ActualHeight);
+            var weekDayFontSize = (double)App.Current.Resources["PhoneFontSizeMedium"];
+
+            CurrentMonthGrid.Width = minSize - weekDayFontSize;
+            CurrentMonthGrid.Height = minSize;            
+        }
+
+        protected override void OnOrientationChanged(OrientationChangedEventArgs e)
+        {
+            base.OnOrientationChanged(e);
+        }
+
+        private void SwipeContentControl_SwipeLeft(object sender, EventArgs e)
+        {
+            CurrentMonthGrid.NextMonth();
+        }
+
+        private void SwipeContentControl_SwipeRight(object sender, EventArgs e)
+        {
+            CurrentMonthGrid.PreviousMonth();
         }
     }
 }

@@ -6,16 +6,27 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:CalendarApp.Controls"
+    xmlns:forty3degrees="clr-namespace:Forty3Degrees"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <TextBlock>Test</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <forty3degrees:SwipeContentControl
+            CanSwipeLeft="True" CanSwipeRight="True"
+            SwipeLeft="SwipeContentControl_SwipeLeft" SwipeRight="SwipeContentControl_SwipeRight">
+            <controls:MonthGrid Name="CurrentMonthGrid" />
+        </forty3degrees:SwipeContentControl>
     </Grid>
 
 </phone:PhoneApplicationPage>
