@@ -15,15 +15,17 @@ namespace CalendarApp.Pages
         public CurrentMonthPage()
         {
             InitializeComponent();
+
+            var content = Application.Current.Host.Content;
+
+            var minSize = Math.Min(content.ActualWidth, content.ActualHeight);
+            CurrentMonthGrid.Width = minSize;
+            CurrentMonthGrid.Height = minSize;
         }
 
         protected override void OnOrientationChanged(OrientationChangedEventArgs e)
         {
             base.OnOrientationChanged(e);
-
-            var minSize = Math.Min(ActualWidth, ActualHeight);
-            CurrentMonthGrid.Width = minSize;
-            CurrentMonthGrid.Height = minSize;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace CalendarApp.Models
 {
-    class DayModel
+    public class DayModel
     {
         int day;
 
