@@ -28,5 +28,15 @@ namespace CalendarApp.Pages
         {
             base.OnOrientationChanged(e);
         }
+
+        private void SwipeContentControl_SwipeLeft(object sender, EventArgs e)
+        {
+            CurrentMonthGrid.NextMonth();
+        }
+
+        private void SwipeContentControl_SwipeRight(object sender, EventArgs e)
+        {
+            CurrentMonthGrid.PreviousMonth();
+        }
     }
 }

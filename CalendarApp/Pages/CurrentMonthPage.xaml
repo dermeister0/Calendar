@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:CalendarApp.Controls"
+    xmlns:forty3degrees="clr-namespace:Forty3Degrees"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -21,7 +22,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <controls:MonthGrid Name="CurrentMonthGrid" />
+        <forty3degrees:SwipeContentControl
+            CanSwipeLeft="True" CanSwipeRight="True"
+            SwipeLeft="SwipeContentControl_SwipeLeft" SwipeRight="SwipeContentControl_SwipeRight">
+            <controls:MonthGrid Name="CurrentMonthGrid" />
+        </forty3degrees:SwipeContentControl>
     </Grid>
 
 </phone:PhoneApplicationPage>

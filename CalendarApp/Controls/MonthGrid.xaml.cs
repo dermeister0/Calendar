@@ -31,14 +31,21 @@ namespace CalendarApp.Controls
             startDate = new DateTime(today.Year, today.Month, 1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
 
+            Init();
+        }
+
+        void Init()
+        {
+            MonthCellGrid.Children.Clear();
+
             var model = new MonthModel
                 {
                     Year = startDate.Year,
-                    MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month].ToLower()
+                    MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month - 1].ToLower()
                 };
             DataContext = model;
 
-            hasTodayCell = true; // @@
+            hasTodayCell = today.Month == startDate.Month && today.Year == startDate.Year;
 
             CreateCells();
         }
@@ -88,6 +95,20 @@ namespace CalendarApp.Controls
                 Grid.SetColumn(label, i);
                 MonthCellGrid.Children.Add(label);
             }
+        }
+
+        public void NextMonth()
+        {
+            startDate = startDate.AddMonths(1);
+            finishDate = startDate.AddMonths(1).AddDays(-1);
+            Init();
+        }
+
+        public void PreviousMonth()
+        {
+            startDate = startDate.AddMonths(-1);
+            finishDate = startDate.AddMonths(1).AddDays(-1);
+            Init();
         }
     }
 }
