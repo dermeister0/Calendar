@@ -11,13 +11,13 @@
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition x:Name="WeekDayRowDefinition" Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        <StackPanel>
-            <TextBlock Text="2014" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="january" Style="{StaticResource PhoneTextTitle1Style}" Margin="20 0 0 0"/>
+
+        <StackPanel Margin="12,17,0,28">
+            <TextBlock Text="{Binding Year}" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock Text="{Binding MonthName}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,0" />
         </StackPanel>
 
         <Grid Name="MonthCellGrid" Grid.Row="1">

@@ -31,6 +31,13 @@ namespace CalendarApp.Controls
             startDate = new DateTime(today.Year, today.Month, 1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
 
+            var model = new MonthModel
+                {
+                    Year = startDate.Year,
+                    MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month].ToLower()
+                };
+            DataContext = model;
+
             hasTodayCell = true; // @@
 
             CreateCells();
@@ -69,13 +76,14 @@ namespace CalendarApp.Controls
 
         void CreateWeekDays()
         {
-            var dayNames = CultureInfo.CurrentCulture.DateTimeFormat.ShortestDayNames;
+            var dayNames = CultureInfo.CurrentUICulture.DateTimeFormat.ShortestDayNames;
 
             for (int i = 0; i < CalendarSupport.DaysInWeek; i++)
             {
                 var label = new TextBlock();
-                label.Text = dayNames[CalendarSupport.GetIndexOfDay(i)];
+                label.Text = dayNames[CalendarSupport.GetIndexOfDay(i)].ToLower();
                 label.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+                label.Style = App.Current.Resources["PhoneTextTitle3Style"] as Style;
 
                 Grid.SetColumn(label, i);
                 MonthCellGrid.Children.Add(label);

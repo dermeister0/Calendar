@@ -16,8 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>
-    </SupportedCultures>
+    <SupportedCultures>ru%3bru-RU</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>CalendarApp.xap</XapFilename>
@@ -71,6 +70,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DayModel.cs" />
+    <Compile Include="Models\MonthModel.cs" />
     <Compile Include="Pages\CurrentMonthPage.xaml.cs">
       <DependentUpon>CurrentMonthPage.xaml</DependentUpon>
     </Compile>

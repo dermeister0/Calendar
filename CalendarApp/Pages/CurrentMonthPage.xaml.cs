@@ -17,10 +17,11 @@ namespace CalendarApp.Pages
             InitializeComponent();
 
             var content = Application.Current.Host.Content;
-
             var minSize = Math.Min(content.ActualWidth, content.ActualHeight);
-            CurrentMonthGrid.Width = minSize;
-            CurrentMonthGrid.Height = minSize;
+            var weekDayFontSize = (double)App.Current.Resources["PhoneFontSizeMedium"];
+
+            CurrentMonthGrid.Width = minSize - weekDayFontSize;
+            CurrentMonthGrid.Height = minSize;            
         }
 
         protected override void OnOrientationChanged(OrientationChangedEventArgs e)
