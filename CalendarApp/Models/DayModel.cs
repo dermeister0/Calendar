@@ -38,9 +38,25 @@ namespace CalendarApp.Models
 
         public Brush BorderBrush { get; set; }
 
+        bool hasEvents;
+
+        public bool HasEvents
+        {
+            get { return hasEvents; }
+            set
+            {
+                hasEvents = value;
+                IsEventsFlagVisible = hasEvents ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public Visibility IsEventsFlagVisible { get; set; }
+
         public DayModel()
         {
             BorderBrush = App.Current.Resources["PhoneForegroundBrush"] as Brush; // @@
+            IsTextVisible = Visibility.Collapsed;
+            IsEventsFlagVisible = Visibility.Collapsed;
         }
     }
 }

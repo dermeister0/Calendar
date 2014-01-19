@@ -8,11 +8,17 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480">
-    
-    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <Rectangle Stroke="{Binding BorderBrush}" />
-        <TextBlock Text="{Binding Day}" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <TextBlock Text="{Binding Day}" HorizontalAlignment="Right" VerticalAlignment="Center"
                    Style="{StaticResource PhoneTextNormalStyle}" Visibility="{Binding IsTextVisible}"
                    Foreground="{Binding BorderBrush}" />
+        
+        <Canvas>
+            <Polygon Points="0,0 24,0 0,24"
+                     Fill="{Binding BorderBrush}"
+                     Visibility="{Binding IsEventsFlagVisible}" />
+        </Canvas>
     </Grid>
 </UserControl>
