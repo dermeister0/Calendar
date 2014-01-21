@@ -11,6 +11,9 @@ using CalendarApp.Utils;
 using CalendarApp.Models;
 using System.Globalization;
 using Microsoft.Phone.UserData;
+using Ninject;
+using CalendarApp.Logic;
+using CalendarApp.ViewModels;
 
 namespace CalendarApp.Controls
 {
@@ -33,6 +36,8 @@ namespace CalendarApp.Controls
             today = DateTime.Today;
             startDate = new DateTime(today.Year, today.Month, 1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
+
+            DataContext = App.Ioc.Get<MonthViewModel>();
 
             Init();
         }

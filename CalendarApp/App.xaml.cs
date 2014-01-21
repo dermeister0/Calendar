@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
+using CalendarApp.Logic;
 
 namespace CalendarApp
 {
@@ -110,7 +111,12 @@ namespace CalendarApp
 
         void InitializeIoc()
         {
+            IocContainer.Bind<IDayList>().To<DayList>();
+        }
 
+        public static IKernel Ioc
+        {
+            get { return (App.Current as App).IocContainer; }
         }
 
         #region Phone application initialization
