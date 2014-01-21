@@ -12,11 +12,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Ninject;
 
 namespace CalendarApp
 {
     public partial class App : Application
     {
+        public IKernel IocContainer = new StandardKernel();
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -36,6 +39,8 @@ namespace CalendarApp
 
             // Phone-specific initialization
             InitializePhoneApplication();
+
+            InitializeIoc();
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
@@ -101,6 +106,11 @@ namespace CalendarApp
                 // An unhandled exception has occurred; break into the debugger
                 System.Diagnostics.Debugger.Break();
             }
+        }
+
+        void InitializeIoc()
+        {
+
         }
 
         #region Phone application initialization
