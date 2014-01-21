@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CalendarApp.Logic
 {
-    class DayList : IDayList
+    public class DayList : IDayList
     {
         public Models.DayModel CurrentDay
         {

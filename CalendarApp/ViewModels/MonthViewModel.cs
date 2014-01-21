@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CalendarApp.ViewModels
 {
-    class MonthViewModel
+    public class MonthViewModel
     {
         IDayList dayList;
 
