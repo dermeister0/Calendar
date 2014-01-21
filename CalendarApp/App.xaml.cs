@@ -114,11 +114,6 @@ namespace CalendarApp
             IocContainer.Bind<IDayList>().To<DayList>();
         }
 
-        public static IKernel Ioc
-        {
-            get { return (App.Current as App).IocContainer; }
-        }
-
         #region Phone application initialization
 
         // Avoid double-initialization
