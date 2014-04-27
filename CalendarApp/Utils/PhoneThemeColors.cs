@@ -10,7 +10,7 @@
 using System;
 using System.Windows.Media;
 
-namespace CalendarApp.Util
+namespace CalendarApp.Utils
 {
     public static class PhoneThemeColors
     {

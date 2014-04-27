@@ -1,5 +1,4 @@
-﻿using CalendarApp.Util;
-using CalendarApp.Utils;
+﻿using CalendarApp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;

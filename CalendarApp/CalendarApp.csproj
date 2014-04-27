@@ -86,6 +86,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ActionCommand.cs" />
+    <Compile Include="Utils\AppSettings.cs" />
+    <Compile Include="Utils\AppSettingsBase.cs" />
     <Compile Include="Utils\NavigationService.cs" />
     <Compile Include="ViewModels\ColorPickerViewModel.cs" />
     <Compile Include="Models\DayModel.cs" />
