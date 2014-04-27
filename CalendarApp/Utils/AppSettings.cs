@@ -19,15 +19,15 @@ namespace CalendarApp.Utils
             set { AddOrUpdateValueAndSave("BackgroundColor", value); }
         }
 
-        public Color WeekendBackgroundColor
+        public Color WeekendColor
         {
             get
             {
-                var defaultColor = (Color)App.Current.Resources["PhoneBackgroundColor"];
+                var defaultColor = Colors.Red;
 
-                return GetValueOrDefault<Color>("WeekendBackgroundColor", defaultColor);
+                return GetValueOrDefault<Color>("WeekendColor", defaultColor);
             }
-            set { AddOrUpdateValueAndSave("WeekendBackgroundColor", value); }
+            set { AddOrUpdateValueAndSave("WeekendColor", value); }
         }
 
         public Color ForegroundColor

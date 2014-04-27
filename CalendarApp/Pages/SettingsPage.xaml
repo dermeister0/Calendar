@@ -37,10 +37,11 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <controls:ColorPicker Height="Auto" Width="Auto" DataContext="{Binding ForegroundColor}" />
             <controls:ColorPicker Height="Auto" Width="Auto" DataContext="{Binding BackgroundColor}"
+                                  Grid.Row="0"/>
+            <controls:ColorPicker Height="Auto" Width="Auto" DataContext="{Binding ForegroundColor}"
                                   Grid.Row="1"/>
-            <controls:ColorPicker Height="Auto" Width="Auto" DataContext="{Binding WeekendBackgroundColor}"
+            <controls:ColorPicker Height="Auto" Width="Auto" DataContext="{Binding WeekendColor}"
                                   Grid.Row="2"/>
         </Grid>
     </Grid>

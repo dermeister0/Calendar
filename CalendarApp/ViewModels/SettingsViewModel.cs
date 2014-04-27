@@ -13,7 +13,7 @@ namespace CalendarApp.ViewModels
 
         public ColorPickerViewModel BackgroundColor { get; set; }
 
-        public ColorPickerViewModel WeekendBackgroundColor { get; set; }
+        public ColorPickerViewModel WeekendColor { get; set; }
 
         public SettingsViewModel()
         {
@@ -21,7 +21,7 @@ namespace CalendarApp.ViewModels
 
             ForegroundColor = new ColorPickerViewModel
                 {
-                    Header = "Foreground",
+                    Header = "Foreground color",
                     SelectedColor = new ColorItem(AppSettings.Instance.ForegroundColor) { Name = "Default" }
                 };
             ForegroundColor.PropertyChanged += (sender, e) =>
@@ -32,7 +32,7 @@ namespace CalendarApp.ViewModels
 
             BackgroundColor = new ColorPickerViewModel
                 {
-                    Header = "Background",
+                    Header = "Background color",
                     SelectedColor = new ColorItem(AppSettings.Instance.BackgroundColor) { Name = "Default" }
                 };
             BackgroundColor.PropertyChanged += (sender, e) =>
@@ -41,14 +41,14 @@ namespace CalendarApp.ViewModels
                     appBrushesVM.Reload();
                 };
 
-            WeekendBackgroundColor = new ColorPickerViewModel
+            WeekendColor = new ColorPickerViewModel
                 {
-                    Header = "Weekend background",
-                    SelectedColor = new ColorItem(AppSettings.Instance.WeekendBackgroundColor) { Name = "Default" }
+                    Header = "Weekend color",
+                    SelectedColor = new ColorItem(AppSettings.Instance.WeekendColor) { Name = "Default" }
                 };
-            WeekendBackgroundColor.PropertyChanged += (sender, e) =>
+            WeekendColor.PropertyChanged += (sender, e) =>
                 {
-                    AppSettings.Instance.WeekendBackgroundColor = WeekendBackgroundColor.SelectedColor.Color;
+                    AppSettings.Instance.WeekendColor = WeekendColor.SelectedColor.Color;
                     appBrushesVM.Reload();
                 };
         }

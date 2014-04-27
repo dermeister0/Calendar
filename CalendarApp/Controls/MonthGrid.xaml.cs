@@ -113,7 +113,7 @@ namespace CalendarApp.Controls
                 if (!CalendarSupport.IsWeekend(i))
                     label.Foreground = appBrushesVM.ForegroundBrush;
                 else
-                    label.Foreground = appBrushesVM.WeekendBackgroundBrush;
+                    label.Foreground = appBrushesVM.WeekendBrush;
 
                 appBrushesVM.PropertyChanged += (sender, e) => label.Foreground = appBrushesVM.ForegroundBrush;
 

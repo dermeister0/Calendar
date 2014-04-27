@@ -21,15 +21,15 @@ namespace CalendarApp.ViewModels
             }
         }
 
-        Brush weekendBackgroundBrush;
+        Brush weekendBrush;
         
-        public Brush WeekendBackgroundBrush
+        public Brush WeekendBrush
         {
-            get { return weekendBackgroundBrush; }
+            get { return weekendBrush; }
             private set
             {
-                weekendBackgroundBrush = value;
-                OnPropertyChanged("WeekendBackgroundBrush");
+                weekendBrush = value;
+                OnPropertyChanged("WeekendBrush");
             }
         }
 
@@ -55,7 +55,7 @@ namespace CalendarApp.ViewModels
             var appSettings = AppSettings.Instance;
 
             BackgroundBrush = new SolidColorBrush(appSettings.BackgroundColor);
-            WeekendBackgroundBrush = new SolidColorBrush(appSettings.WeekendBackgroundColor);
+            WeekendBrush = new SolidColorBrush(appSettings.WeekendColor);
             ForegroundBrush = new SolidColorBrush(appSettings.ForegroundColor);
         }
     }

@@ -38,7 +38,7 @@ namespace CalendarApp.Models
             get
             {
                 if (IsWeekend)
-                    return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.WeekendBackgroundBrush;
+                    return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.WeekendBrush;
                 else
                     return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.ForegroundBrush;
             }
@@ -49,7 +49,7 @@ namespace CalendarApp.Models
             get
             {
                 if (IsWeekend)
-                    return IsToday ? appBrushesVM.WeekendBackgroundBrush : appBrushesVM.BackgroundBrush;
+                    return IsToday ? appBrushesVM.WeekendBrush : appBrushesVM.BackgroundBrush;
                 else
                     return IsToday ? appBrushesVM.ForegroundBrush : appBrushesVM.BackgroundBrush;
             }
