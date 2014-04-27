@@ -89,6 +89,8 @@
     <Compile Include="Utils\AppSettings.cs" />
     <Compile Include="Utils\AppSettingsBase.cs" />
     <Compile Include="Utils\NavigationService.cs" />
+    <Compile Include="ViewModels\AppBrushesViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ColorPickerViewModel.cs" />
     <Compile Include="Models\DayModel.cs" />
     <Compile Include="Models\MonthModel.cs" />

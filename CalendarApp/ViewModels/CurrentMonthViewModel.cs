@@ -7,13 +7,17 @@ using System.Windows.Input;
 
 namespace CalendarApp.ViewModels
 {
-    public class CurrentMonthViewModel
+    public class CurrentMonthViewModel : BaseViewModel
     {
         public ICommand GoToSettingsCommand { get; set; }
+
+        public AppBrushesViewModel AppBrushesVM { get; set; }
 
         public CurrentMonthViewModel()
         {
             GoToSettingsCommand = new ActionCommand(OnGoToSettings);
+
+            AppBrushesVM = Ioc.Get<AppBrushesViewModel>();
         }
 
         void OnGoToSettings()

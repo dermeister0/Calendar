@@ -30,5 +30,5 @@
     <toolkit:ListPicker Name="Picker" ItemTemplate="{StaticResource ColorItemTemplate}"
                         FullModeItemTemplate="{StaticResource ColorFullItemTemplate}"
                         ItemsSource="{Binding Colors}" Header="{Binding Header}"
-                        SelectedItem="{Binding SelectedColor}"/>
+                        SelectedItem="{Binding SelectedColor, Mode=TwoWay}"/>
 </UserControl>

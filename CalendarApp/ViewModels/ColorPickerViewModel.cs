@@ -1,4 +1,5 @@
 ﻿using CalendarApp.Utils;
+using CalendarApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Windows.Media;
 using Media = System.Windows.Media;
 
-namespace CalendarApp.Models
+namespace CalendarApp.ViewModels
 {
     public class ColorItem
     {
@@ -36,7 +37,7 @@ namespace CalendarApp.Models
         }
     }
 
-    public class ColorPickerViewModel
+    public class ColorPickerViewModel : BaseViewModel
     {
         public string Header { get; set; }
 
@@ -53,6 +54,7 @@ namespace CalendarApp.Models
                     Colors.Add(value);
 
                 selectedColor = value;
+                OnPropertyChanged("SelectedColor");
             }
         }
 
