@@ -82,6 +82,7 @@ namespace CalendarApp.Controls
 
                         if (hasTodayCell && day == today.Day)
                             model.IsToday = true;
+                        model.IsWeekend = d == 5 || d == 6;
                     }
 
                     cell.DataContext = model;

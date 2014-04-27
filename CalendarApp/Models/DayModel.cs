@@ -37,7 +37,10 @@ namespace CalendarApp.Models
         {
             get
             {
-                return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.ForegroundBrush;
+                if (IsWeekend)
+                    return IsToday ? appBrushesVM.WeekendBackgroundBrush : appBrushesVM.ForegroundBrush;
+                else
+                    return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.ForegroundBrush;
             }
         }
 
@@ -45,7 +48,10 @@ namespace CalendarApp.Models
         {
             get
             {
-                return IsToday ? appBrushesVM.ForegroundBrush : appBrushesVM.BackgroundBrush;
+                if (IsWeekend)
+                    return IsToday ? appBrushesVM.ForegroundBrush : appBrushesVM.WeekendBackgroundBrush;
+                else
+                    return IsToday ? appBrushesVM.ForegroundBrush : appBrushesVM.BackgroundBrush;
             }
         }
 
@@ -64,6 +70,8 @@ namespace CalendarApp.Models
         public Visibility IsEventsFlagVisible { get; set; }
 
         AppBrushesViewModel appBrushesVM;
+
+        public bool IsWeekend { get; set; }
 
         public DayModel()
         {
