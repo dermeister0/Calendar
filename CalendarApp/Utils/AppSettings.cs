@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace CalendarApp.Utils
 {
@@ -23,7 +19,7 @@ namespace CalendarApp.Utils
         {
             get
             {
-                var defaultColor = Colors.Red;
+                var defaultColor = PhoneThemeColors.Red;
 
                 return GetValueOrDefault<Color>("WeekendColor", defaultColor);
             }
