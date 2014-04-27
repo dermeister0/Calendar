@@ -24,5 +24,10 @@ namespace CalendarApp.Utils
                 return 0;
             return day + 1;
         }
+
+        public static bool IsWeekend(int day)
+        {
+            return day == 5 || day == 6;
+        }
     }
 }

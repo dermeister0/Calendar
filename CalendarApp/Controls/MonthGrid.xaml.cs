@@ -74,7 +74,7 @@ namespace CalendarApp.Controls
                     Grid.SetRow(cell, w + 1);
                     Grid.SetColumn(cell, d);
 
-                    DayModel model = emptyDay;
+                    DayModel model;
 
                     if (day > 0 && day <= finishDate.Day)
                     {
@@ -82,9 +82,13 @@ namespace CalendarApp.Controls
 
                         if (hasTodayCell && day == today.Day)
                             model.IsToday = true;
-                        model.IsWeekend = d == 5 || d == 6;
+                    }
+                    else
+                    {
+                         model = new DayModel();
                     }
 
+                    model.IsWeekend = CalendarSupport.IsWeekend(d);
                     cell.DataContext = model;
 
                     MonthCellGrid.Children.Add(cell);
@@ -105,7 +109,11 @@ namespace CalendarApp.Controls
                 label.Text = dayNames[CalendarSupport.GetIndexOfDay(i)].ToLower();
                 label.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
                 label.Style = App.Current.Resources["PhoneTextTitle3Style"] as Style;
-                label.Foreground = appBrushesVM.ForegroundBrush;
+
+                if (!CalendarSupport.IsWeekend(i))
+                    label.Foreground = appBrushesVM.ForegroundBrush;
+                else
+                    label.Foreground = appBrushesVM.WeekendBackgroundBrush;
 
                 appBrushesVM.PropertyChanged += (sender, e) => label.Foreground = appBrushesVM.ForegroundBrush;
 
