@@ -21,9 +21,29 @@ namespace CalendarApp.ViewModels
             }
         }
 
-        public Brush WeekendBackgroundBrush { get; private set; }
+        Brush weekendBackgroundBrush;
+        
+        public Brush WeekendBackgroundBrush
+        {
+            get { return weekendBackgroundBrush; }
+            private set
+            {
+                weekendBackgroundBrush = value;
+                OnPropertyChanged("WeekendBackgroundBrush");
+            }
+        }
 
-        public Brush ForegroundBrush { get; private set; }
+        Brush foregroundBrush;
+
+        public Brush ForegroundBrush
+        {
+            get { return foregroundBrush; }
+            private set
+            {
+                foregroundBrush = value;
+                OnPropertyChanged("ForegroundBrush");
+            }
+        }
 
         public AppBrushesViewModel()
         {
