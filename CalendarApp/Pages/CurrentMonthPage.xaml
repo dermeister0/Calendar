@@ -17,19 +17,21 @@
     shell:SystemTray.IsVisible="True"
     DataContext="{Binding Source={StaticResource Locator}, Path=CurrentMonthVM}">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{Binding AppBrushesVM.BackgroundBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <forty3degrees:SwipeContentControl CanSwipeLeft="True" CanSwipeRight="True"
+                                       SwipeLeft="SwipeContentControl_SwipeLeft"
+                                       SwipeRight="SwipeContentControl_SwipeRight"
+                                       HorizontalContentAlignment="Stretch"
+                                       VerticalContentAlignment="Stretch">
 
-        <forty3degrees:SwipeContentControl
-            CanSwipeLeft="True" CanSwipeRight="True"
-            SwipeLeft="SwipeContentControl_SwipeLeft" SwipeRight="SwipeContentControl_SwipeRight">
+        <Grid Background="{Binding AppBrushesVM.BackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
             <controls:MonthGrid Name="CurrentMonthGrid" />
-        </forty3degrees:SwipeContentControl>
-    </Grid>
+        </Grid>
+    </forty3degrees:SwipeContentControl>
 
     <bab:Bindable.ApplicationBar>
         <bab:BindableApplicationBar>
