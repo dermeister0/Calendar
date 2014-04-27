@@ -10,6 +10,9 @@ using Microsoft.Phone.Shell;
 using CalendarApp.Utils;
 using CalendarApp.Models;
 using System.Globalization;
+using Microsoft.Phone.UserData;
+using CalendarApp.Logic;
+using CalendarApp.ViewModels;
 
 namespace CalendarApp.Controls
 {
@@ -23,6 +26,8 @@ namespace CalendarApp.Controls
 
         bool hasTodayCell;
 
+        DayModel[] days;
+
         public MonthGrid()
         {
             InitializeComponent();
@@ -31,6 +36,8 @@ namespace CalendarApp.Controls
             startDate = new DateTime(today.Year, today.Month, 1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
 
+            DataContext = Ioc.Get<MonthViewModel>();
+
             Init();
         }
 
@@ -38,21 +45,27 @@ namespace CalendarApp.Controls
         {
             MonthCellGrid.Children.Clear();
 
+            days = new DayModel[finishDate.Day];
+            for (int i = 0; i < finishDate.Day; i++)
+                days[i] = new DayModel { Day = i + 1 };
+
             var model = new MonthModel
-                {
-                    Year = startDate.Year,
-                    MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month - 1].ToLower()
-                };
+            {
+                Year = startDate.Year,
+                MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month - 1].ToLower()
+            };
             DataContext = model;
 
             hasTodayCell = today.Month == startDate.Month && today.Year == startDate.Year;
 
-            CreateCells();
+            LoadAppointments();
         }
 
         void CreateCells()
         {
             CreateWeekDays();
+
+            var emptyDay = new DayModel();
 
             int day = 2 - CalendarSupport.GetDayNumber(startDate.DayOfWeek);
             for (int w = 0; w < CalendarSupport.WeeksInMonth; w++)
@@ -63,15 +76,15 @@ namespace CalendarApp.Controls
                     Grid.SetRow(cell, w + 1);
                     Grid.SetColumn(cell, d);
 
-                    var model = new DayModel();
+                    DayModel model = emptyDay;
 
                     if (day > 0 && day <= finishDate.Day)
-                        model.Day = day;
-                    else
-                        model.Day = 0;
+                    {
+                        model = days[day - 1];
 
-                    if (hasTodayCell && day == today.Day)
-                        model.IsToday = true;
+                        if (hasTodayCell && day == today.Day)
+                            model.IsToday = true;
+                    }
 
                     cell.DataContext = model;
 
@@ -109,6 +122,25 @@ namespace CalendarApp.Controls
             startDate = startDate.AddMonths(-1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
             Init();
+        }
+
+        void LoadAppointments()
+        {
+            var appointments = new Appointments();
+            appointments.SearchCompleted += (sender, e) =>
+                {
+                    for (int i = 0; i < days.Length; i++)
+                    {
+                        var tmpDate = new DateTime(startDate.Year, startDate.Month, i + 1);
+                        var events = e.Results.Where(a => a.StartTime >= tmpDate && a.StartTime < tmpDate.AddDays(1));
+
+                        days[i].HasEvents = events.Any();
+                    }
+
+                    CreateCells();
+                };
+
+            appointments.SearchAsync(startDate, finishDate.AddDays(1).AddSeconds(-1), null);
         }
     }
 }
