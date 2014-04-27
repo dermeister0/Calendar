@@ -36,8 +36,6 @@ namespace CalendarApp.Controls
             startDate = new DateTime(today.Year, today.Month, 1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
 
-            DataContext = Ioc.Get<MonthViewModel>();
-
             Init();
         }
 

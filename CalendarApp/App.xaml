@@ -7,6 +7,7 @@
 
     <!--Application Resources-->
     <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator" xmlns:vm="clr-namespace:CalendarApp.ViewModels" />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
