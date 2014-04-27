@@ -17,5 +17,10 @@ namespace CalendarApp.ViewModels
         {
             get { return Ioc.Get<SettingsViewModel>(); }
         }
+
+        public CurrentMonthViewModel CurrentMonthVM
+        {
+            get { return Ioc.Get<CurrentMonthViewModel>(); }
+        }
     }
 }

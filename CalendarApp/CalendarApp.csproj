@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BindableApplicationBar">
+      <HintPath>..\lib\BindableApplicationBar\BindableApplicationBar.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
@@ -82,6 +85,8 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ActionCommand.cs" />
+    <Compile Include="Utils\NavigationService.cs" />
     <Compile Include="ViewModels\ColorPickerViewModel.cs" />
     <Compile Include="Models\DayModel.cs" />
     <Compile Include="Models\MonthModel.cs" />
@@ -98,6 +103,7 @@
     <Compile Include="Utils\CalendarSupport.cs" />
     <Compile Include="Utils\Ioc.cs" />
     <Compile Include="Utils\PhoneThemeColors.cs" />
+    <Compile Include="ViewModels\CurrentMonthViewModel.cs" />
     <Compile Include="ViewModels\MonthViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />

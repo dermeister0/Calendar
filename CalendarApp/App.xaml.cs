@@ -117,6 +117,9 @@ namespace CalendarApp
             // Explicit declarations.
             IocContainer.Bind<MonthViewModel>().ToSelf();
             IocContainer.Bind<SettingsViewModel>().ToSelf();
+            IocContainer.Bind<CurrentMonthViewModel>().ToSelf();
+
+            IocContainer.Bind<NavigationService>().ToSelf();
         }
 
         #region Phone application initialization

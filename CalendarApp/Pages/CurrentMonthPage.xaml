@@ -8,12 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:CalendarApp.Controls"
     xmlns:forty3degrees="clr-namespace:Forty3Degrees"
+    xmlns:bab="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding Source={StaticResource Locator}, Path=CurrentMonthVM}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -29,4 +31,11 @@
         </forty3degrees:SwipeContentControl>
     </Grid>
 
+    <bab:Bindable.ApplicationBar>
+        <bab:BindableApplicationBar>
+            <bab:BindableApplicationBar.MenuItems>
+                <bab:BindableApplicationBarMenuItem Text="settings" Command="{Binding GoToSettingsCommand}" />
+            </bab:BindableApplicationBar.MenuItems>
+        </bab:BindableApplicationBar>
+    </bab:Bindable.ApplicationBar>
 </phone:PhoneApplicationPage>
