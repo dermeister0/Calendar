@@ -17,22 +17,23 @@
     shell:SystemTray.IsVisible="True"
     DataContext="{Binding Source={StaticResource Locator}, Path=CurrentMonthVM}">
 
-    <forty3degrees:SwipeContentControl CanSwipeLeft="True" CanSwipeRight="True"
-                                       SwipeLeft="SwipeContentControl_SwipeLeft"
-                                       SwipeRight="SwipeContentControl_SwipeRight"
-                                       HorizontalContentAlignment="Stretch"
-                                       VerticalContentAlignment="Stretch">
+    <Grid Background="{Binding AppBrushesVM.ForegroundBrush}">
+        <forty3degrees:SwipeContentControl CanSwipeLeft="True" CanSwipeRight="True"
+                                           SwipeLeft="SwipeContentControl_SwipeLeft"
+                                           SwipeRight="SwipeContentControl_SwipeRight"
+                                           HorizontalContentAlignment="Stretch"
+                                           VerticalContentAlignment="Stretch">
 
-        <Grid Background="{Binding AppBrushesVM.BackgroundBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Grid Background="{Binding AppBrushesVM.BackgroundBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <controls:MonthGrid Name="CurrentMonthGrid" />
-        </Grid>
-    </forty3degrees:SwipeContentControl>
-
+                <controls:MonthGrid Name="CurrentMonthGrid" />
+            </Grid>
+        </forty3degrees:SwipeContentControl>
+    </Grid>
     <bab:Bindable.ApplicationBar>
         <bab:BindableApplicationBar>
             <bab:BindableApplicationBar.MenuItems>
