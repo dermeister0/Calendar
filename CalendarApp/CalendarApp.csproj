@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BindableApplicationBar">
+      <HintPath>..\lib\BindableApplicationBar\BindableApplicationBar.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZLib.Phone">
       <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ICSharpCode.SharpZLib.Phone.dll</HintPath>
     </Reference>
@@ -93,6 +96,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SwipeContentControl.cs" />
     <Compile Include="Controls\DayCell.xaml.cs">
       <DependentUpon>DayCell.xaml</DependentUpon>
@@ -106,6 +112,13 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ActionCommand.cs" />
+    <Compile Include="Utils\AppSettings.cs" />
+    <Compile Include="Utils\AppSettingsBase.cs" />
+    <Compile Include="Utils\NavigationService.cs" />
+    <Compile Include="ViewModels\AppBrushesViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ColorPickerViewModel.cs" />
     <Compile Include="Models\DayModel.cs" />
     <Compile Include="Models\MonthModel.cs" />
     <Compile Include="Pages\CurrentMonthPage.xaml.cs">
@@ -114,21 +127,31 @@
     <Compile Include="Pages\DayEventListPage.xaml.cs">
       <DependentUpon>DayEventListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LiveTileControl.xaml.cs">
       <DependentUpon>LiveTileControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CalendarSupport.cs" />
     <Compile Include="Utils\Ioc.cs" />
+    <Compile Include="Utils\PhoneThemeColors.cs" />
+    <Compile Include="ViewModels\CurrentMonthViewModel.cs" />
     <Compile Include="Utils\LiveTile.cs" />
     <Compile Include="ViewModels\LiveTileViewModel.cs" />
     <Compile Include="ViewModels\MonthViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\DayCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DayEventListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

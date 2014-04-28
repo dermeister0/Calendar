@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CalendarApp.Utils;
+using CalendarApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +9,7 @@ using System.Windows.Media;
 
 namespace CalendarApp.Models
 {
-    public class DayModel
+    public class DayModel : BaseViewModel
     {
         int day;
 
@@ -28,15 +30,30 @@ namespace CalendarApp.Models
         public bool IsToday 
         { 
             get { return isToday; }
-            set
+            set { isToday = value; }
+        }
+
+        public Brush BorderBrush
+        {
+            get
             {
-                isToday = value;
-                if (IsToday)
-                    BorderBrush = App.Current.Resources["PhoneAccentBrush"] as Brush; // @@
+                if (IsWeekend)
+                    return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.WeekendBrush;
+                else
+                    return IsToday ? appBrushesVM.BackgroundBrush : appBrushesVM.ForegroundBrush;
             }
         }
 
-        public Brush BorderBrush { get; set; }
+        public Brush BackgroundBrush
+        {
+            get
+            {
+                if (IsWeekend)
+                    return IsToday ? appBrushesVM.WeekendBrush : appBrushesVM.BackgroundBrush;
+                else
+                    return IsToday ? appBrushesVM.ForegroundBrush : appBrushesVM.BackgroundBrush;
+            }
+        }
 
         bool hasEvents;
 
@@ -52,9 +69,19 @@ namespace CalendarApp.Models
 
         public Visibility IsEventsFlagVisible { get; set; }
 
+        AppBrushesViewModel appBrushesVM;
+
+        public bool IsWeekend { get; set; }
+
         public DayModel()
         {
-            BorderBrush = App.Current.Resources["PhoneForegroundBrush"] as Brush; // @@
+            appBrushesVM = Ioc.Get<AppBrushesViewModel>();
+            appBrushesVM.PropertyChanged += (sender, e) =>
+                {
+                    OnPropertyChanged("BorderBrush");
+                    OnPropertyChanged("BackgroundBrush");
+                };
+
             IsTextVisible = Visibility.Collapsed;
             IsEventsFlagVisible = Visibility.Collapsed;
         }

@@ -14,6 +14,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
 using CalendarApp.Logic;
+using CalendarApp.ViewModels;
 
 namespace CalendarApp
 {
@@ -112,6 +113,14 @@ namespace CalendarApp
         void InitializeIoc()
         {
             IocContainer.Bind<IDayList>().To<DayList>();
+
+            // Explicit declarations.
+            IocContainer.Bind<MonthViewModel>().ToSelf();
+            IocContainer.Bind<SettingsViewModel>().ToSelf();
+            IocContainer.Bind<CurrentMonthViewModel>().ToSelf();
+            IocContainer.Bind<AppBrushesViewModel>().ToSelf().InSingletonScope();
+
+            IocContainer.Bind<NavigationService>().ToSelf().InSingletonScope();
         }
 
         #region Phone application initialization
