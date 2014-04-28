@@ -7,17 +7,20 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    d:DesignHeight="480" d:DesignWidth="480"
+    DataContext="{Binding MonthVM, Source={StaticResource Locator}}">
 
-    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+    <Grid x:Name="LayoutRoot" Background="{Binding AppBrushesVM.BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="WeekDayRowDefinition" Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <StackPanel Margin="12,17,0,28">
-            <TextBlock Text="{Binding Year}" Style="{StaticResource PhoneTextNormalStyle}" />
-            <TextBlock Text="{Binding MonthName}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,0" />
+            <TextBlock Text="{Binding Year}" Style="{StaticResource PhoneTextNormalStyle}"
+                       Foreground="{Binding AppBrushesVM.ForegroundBrush}"/>
+            <TextBlock Text="{Binding MonthName}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,0"
+                       Foreground="{Binding AppBrushesVM.ForegroundBrush}"/>
         </StackPanel>
 
         <Grid Name="MonthCellGrid" Grid.Row="1">

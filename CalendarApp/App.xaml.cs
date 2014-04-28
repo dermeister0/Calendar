@@ -14,6 +14,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
 using CalendarApp.Logic;
+using CalendarApp.ViewModels;
 
 namespace CalendarApp
 {
@@ -69,6 +70,8 @@ namespace CalendarApp
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            new CalendarApp.Utils.LiveTileGenerator().CreateApplicationTile();
+            new CalendarApp.Utils.SheduledTileUpdater().SetUp();
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -112,6 +115,15 @@ namespace CalendarApp
         void InitializeIoc()
         {
             IocContainer.Bind<IDayList>().To<DayList>();
+
+            // Explicit declarations.
+            IocContainer.Bind<MonthViewModel>().ToSelf();
+            IocContainer.Bind<SettingsViewModel>().ToSelf();
+            IocContainer.Bind<CurrentMonthViewModel>().ToSelf();
+            IocContainer.Bind<AppBrushesViewModel>().ToSelf().InSingletonScope();
+            IocContainer.Bind<LiveTileViewModel>().ToSelf().InSingletonScope();
+
+            IocContainer.Bind<NavigationService>().ToSelf().InSingletonScope();
         }
 
         #region Phone application initialization

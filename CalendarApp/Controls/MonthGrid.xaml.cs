@@ -36,8 +36,6 @@ namespace CalendarApp.Controls
             startDate = new DateTime(today.Year, today.Month, 1);
             finishDate = startDate.AddMonths(1).AddDays(-1);
 
-            DataContext = Ioc.Get<MonthViewModel>();
-
             Init();
         }
 
@@ -50,10 +48,10 @@ namespace CalendarApp.Controls
                 days[i] = new DayModel { Day = i + 1 };
 
             var model = new MonthModel
-            {
-                Year = startDate.Year,
-                MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month - 1].ToLower()
-            };
+                {
+                    Year = startDate.Year,
+                    MonthName = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[startDate.Month - 1].ToLower()
+                };
             DataContext = model;
 
             hasTodayCell = today.Month == startDate.Month && today.Year == startDate.Year;
@@ -76,7 +74,7 @@ namespace CalendarApp.Controls
                     Grid.SetRow(cell, w + 1);
                     Grid.SetColumn(cell, d);
 
-                    DayModel model = emptyDay;
+                    DayModel model;
 
                     if (day > 0 && day <= finishDate.Day)
                     {
@@ -85,7 +83,12 @@ namespace CalendarApp.Controls
                         if (hasTodayCell && day == today.Day)
                             model.IsToday = true;
                     }
+                    else
+                    {
+                         model = new DayModel();
+                    }
 
+                    model.IsWeekend = CalendarSupport.IsWeekend(d);
                     cell.DataContext = model;
 
                     MonthCellGrid.Children.Add(cell);
@@ -96,6 +99,8 @@ namespace CalendarApp.Controls
 
         void CreateWeekDays()
         {
+            var appBrushesVM = Ioc.Get<AppBrushesViewModel>();
+
             var dayNames = CultureInfo.CurrentUICulture.DateTimeFormat.ShortestDayNames;
 
             for (int i = 0; i < CalendarSupport.DaysInWeek; i++)
@@ -104,6 +109,13 @@ namespace CalendarApp.Controls
                 label.Text = dayNames[CalendarSupport.GetIndexOfDay(i)].ToLower();
                 label.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
                 label.Style = App.Current.Resources["PhoneTextTitle3Style"] as Style;
+
+                if (!CalendarSupport.IsWeekend(i))
+                    label.Foreground = appBrushesVM.ForegroundBrush;
+                else
+                    label.Foreground = appBrushesVM.WeekendBrush;
+
+                appBrushesVM.PropertyChanged += (sender, e) => label.Foreground = appBrushesVM.ForegroundBrush;
 
                 Grid.SetColumn(label, i);
                 MonthCellGrid.Children.Add(label);
