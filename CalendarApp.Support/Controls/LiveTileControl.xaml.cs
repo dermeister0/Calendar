@@ -27,7 +27,7 @@ namespace CalendarApp.Controls
 
             if (DesignerProperties.GetIsInDesignMode(this))
             {
-                var vm = Ioc.Get<LiveTileViewModel>();
+                var vm = new LiveTileViewModel(); // @@
                 vm.TileWidth = LiveTileGenerator.FlipMediumWidth;
                 vm.TileHeight = LiveTileGenerator.FlipMediumHeight;
                 vm.ForegroundBrush = new SolidColorBrush(Colors.Black);

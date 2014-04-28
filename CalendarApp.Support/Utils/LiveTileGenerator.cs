@@ -36,12 +36,12 @@ namespace CalendarApp.Utils
         {
             WriteableBitmap b = new WriteableBitmap(width, height);
 
-            var liveTileVM = Ioc.Get<LiveTileViewModel>();
+            var liveTileVM = new LiveTileViewModel(); // @@
             liveTileVM.Day = DateTime.Now.Day;
             liveTileVM.WeekDay = DateTime.Now.ToString("ddd");
             liveTileVM.TileWidth = b.PixelWidth - 10;
             liveTileVM.TileHeight = b.PixelHeight;
-            liveTileVM.ForegroundBrush = App.Current.Resources["PhoneForegroundBrush"] as Brush;
+            liveTileVM.ForegroundBrush = Application.Current.Resources["PhoneForegroundBrush"] as Brush;
 
             var liveTileControl = new LiveTileControl();
             liveTileControl.DataContext = liveTileVM; // @@ Binding using StaticResource does not work.

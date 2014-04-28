@@ -3,6 +3,7 @@ using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
 using System.Linq;
 using System;
+using CalendarApp.Utils;
 
 namespace CalendarTileChangeAgent
 {
@@ -47,17 +48,7 @@ namespace CalendarTileChangeAgent
         /// </remarks>
         protected override void OnInvoke(ScheduledTask task)
         {
-            var appTile = ShellTile.ActiveTiles.First();
-
-            if (appTile != null)
-            {
-                var updateData = new StandardTileData
-                    {
-                        Title = "Hello from agent",
-                        Count = DateTime.Now.Hour
-                    };
-                appTile.Update(updateData);
-            }
+            new LiveTileGenerator().CreateApplicationTile();
 
             NotifyComplete();
         }

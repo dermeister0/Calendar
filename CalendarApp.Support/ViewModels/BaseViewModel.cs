@@ -8,7 +8,6 @@ namespace CalendarApp.ViewModels
     {
         public BaseViewModel()
         {
-            navigation = Ioc.Get<NavigationService>();
         }
 
         protected void OnPropertyChanged(string name)
@@ -18,7 +17,5 @@ namespace CalendarApp.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected readonly NavigationService navigation;
     }
 }

@@ -4,3 +4,5 @@ CalendarApp/obj/
 *.user
 CalendarTileChangeAgent/Bin/
 CalendarTileChangeAgent/obj/
+CalendarApp.Support/Bin/
+CalendarApp.Support/obj/

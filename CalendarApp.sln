@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp", "CalendarApp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarTileChangeAgent", "CalendarTileChangeAgent\CalendarTileChangeAgent.csproj", "{50FA098B-7D3F-4BA8-916B-5A1963F59BBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp.Support", "CalendarApp.Support\CalendarApp.Support.csproj", "{C86FA1A4-78F1-4DD1-A4BC-9795DDC4190D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{50FA098B-7D3F-4BA8-916B-5A1963F59BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FA098B-7D3F-4BA8-916B-5A1963F59BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FA098B-7D3F-4BA8-916B-5A1963F59BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C86FA1A4-78F1-4DD1-A4BC-9795DDC4190D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C86FA1A4-78F1-4DD1-A4BC-9795DDC4190D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C86FA1A4-78F1-4DD1-A4BC-9795DDC4190D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C86FA1A4-78F1-4DD1-A4BC-9795DDC4190D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
