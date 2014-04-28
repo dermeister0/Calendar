@@ -72,6 +72,7 @@ namespace CalendarApp.Utils
             var store = IsolatedStorageFile.GetUserStoreForApplication();
             var standardTile = new StandardTileData
                 {
+                    Title = string.Empty,
                     BackgroundImage = new Uri(@"isostore:" + TileBitmapFile, UriKind.Absolute),
                 };
             appTile.Update(standardTile);
