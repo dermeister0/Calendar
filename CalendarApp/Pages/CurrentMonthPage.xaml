@@ -25,7 +25,11 @@
         <forty3degrees:SwipeContentControl
             CanSwipeLeft="True" CanSwipeRight="True"
             SwipeLeft="SwipeContentControl_SwipeLeft" SwipeRight="SwipeContentControl_SwipeRight">
-            <controls:MonthGrid Name="CurrentMonthGrid" />
+            <StackPanel>
+                <controls:MonthGrid Name="CurrentMonthGrid" />
+
+                <Button Content="Trololo" Click="Button_Click" />
+            </StackPanel>
         </forty3degrees:SwipeContentControl>
     </Grid>
 
