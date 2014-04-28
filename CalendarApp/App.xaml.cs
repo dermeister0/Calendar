@@ -71,6 +71,7 @@ namespace CalendarApp
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             new CalendarApp.Utils.LiveTileGenerator().CreateApplicationTile();
+            new CalendarApp.Utils.SheduledTileUpdater().SetUp();
         }
 
         // Code to execute when the application is activated (brought to foreground)

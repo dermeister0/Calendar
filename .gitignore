@@ -2,3 +2,5 @@ CalendarApp/Bin/
 CalendarApp/obj/
 *.suo
 *.user
+CalendarTileChangeAgent/Bin/
+CalendarTileChangeAgent/obj/

@@ -116,6 +116,7 @@
     <Compile Include="Utils\AppSettings.cs" />
     <Compile Include="Utils\AppSettingsBase.cs" />
     <Compile Include="Utils\NavigationService.cs" />
+    <Compile Include="Utils\SheduledTileUpdater.cs" />
     <Compile Include="ViewModels\AppBrushesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ColorPickerViewModel.cs" />
@@ -201,7 +202,12 @@
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CalendarTileChangeAgent\CalendarTileChangeAgent.csproj">
+      <Project>{50FA098B-7D3F-4BA8-916B-5A1963F59BBA}</Project>
+      <Name>CalendarTileChangeAgent</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
