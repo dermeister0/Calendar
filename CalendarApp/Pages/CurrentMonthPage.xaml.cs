@@ -7,7 +7,6 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using CalendarApp.Utils;
 
 namespace CalendarApp.Pages
 {
@@ -38,13 +37,6 @@ namespace CalendarApp.Pages
         private void SwipeContentControl_SwipeRight(object sender, EventArgs e)
         {
             CurrentMonthGrid.PreviousMonth();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var lt = new LiveTile();
-            lt.CreateBitmap();
-            lt.CreateApplicationTile();
         }
     }
 }

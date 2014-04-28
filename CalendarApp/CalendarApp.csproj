@@ -138,7 +138,7 @@
     <Compile Include="Utils\Ioc.cs" />
     <Compile Include="Utils\PhoneThemeColors.cs" />
     <Compile Include="ViewModels\CurrentMonthViewModel.cs" />
-    <Compile Include="Utils\LiveTile.cs" />
+    <Compile Include="Utils\LiveTileGenerator.cs" />
     <Compile Include="ViewModels\LiveTileViewModel.cs" />
     <Compile Include="ViewModels\MonthViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />

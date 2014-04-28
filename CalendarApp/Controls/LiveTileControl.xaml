@@ -4,24 +4,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{Binding ForegroundBrush}"
-    d:DesignHeight="336" d:DesignWidth="336"
-    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    d:DesignHeight="336" d:DesignWidth="336">
     
     <Grid x:Name="LayoutRoot"
           Width="{Binding TileWidth}"
           Height="{Binding TileHeight}">
+
+        <TextBlock Text="{Binding WeekDay}"
+                   Style="{StaticResource PhoneTextNormalStyle}"
+                   TextAlignment="Right"
+                   Width="{Binding WeekDayWidth}"
+                   Margin="20 260 0 0"
+                   FontSize="50"/>
         
-        <TextBlock Text="1"
+        <TextBlock Text="{Binding Day}"
                    FontFamily="{StaticResource PhoneFontFamilySemiBold}"
                    Foreground="{Binding ForegroundBrush}"
                    TextAlignment="Right"
-                   Width="{Binding TileWidth}" Height="{Binding TileWidth}"
-                   Margin="0 200 0 0"
-                   FontSize="120"/>
-        
-        <Line X1="0" Y1="0" X2="336" Y2="336" Stroke="Red" StrokeThickness="5" />
+                   Width="{Binding TileWidth}"
+                   Margin="0 210 0 0"
+                   FontSize="100"/>
     </Grid>
 </UserControl>

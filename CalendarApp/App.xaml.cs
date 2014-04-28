@@ -70,6 +70,7 @@ namespace CalendarApp
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            new CalendarApp.Utils.LiveTileGenerator().CreateApplicationTile();
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -119,6 +120,7 @@ namespace CalendarApp
             IocContainer.Bind<SettingsViewModel>().ToSelf();
             IocContainer.Bind<CurrentMonthViewModel>().ToSelf();
             IocContainer.Bind<AppBrushesViewModel>().ToSelf().InSingletonScope();
+            IocContainer.Bind<LiveTileViewModel>().ToSelf().InSingletonScope();
 
             IocContainer.Bind<NavigationService>().ToSelf().InSingletonScope();
         }

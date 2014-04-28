@@ -6,14 +6,74 @@ using System.Windows.Media;
 
 namespace CalendarApp.ViewModels
 {
-    public class LiveTileViewModel
+    public class LiveTileViewModel : BaseViewModel
     {
-        public int TileWidth { get; set; }
+        int tileWidth;
 
-        public int TileHeight { get; set; }
+        public int TileWidth
+        {
+            get { return tileWidth; }
+            set
+            {
+                tileWidth = value;
+                OnPropertyChanged("TileWidth");
+                OnPropertyChanged("WeekDayWidth");
+            }
+        }
 
-        public int Day { get; set; }
+        int tileHeight;
 
-        public Brush ForegroundBrush { get; set; }
+        public int TileHeight
+        {
+            get { return tileHeight; }
+            set
+            {
+                tileHeight = value;
+                OnPropertyChanged("TileHeight");
+            }
+        }
+
+        int day;
+
+        public int Day
+        {
+            get { return day; }
+            set
+            {
+                day = value;
+                OnPropertyChanged("Day");
+            }
+        }
+
+        Brush foregroundBrush;
+
+        public Brush ForegroundBrush
+        {
+            get { return foregroundBrush; }
+            set
+            {
+                foregroundBrush = value;
+                OnPropertyChanged("ForegroundBrush");
+            }
+        }
+
+        int weekDayWidth;
+
+        public int WeekDayWidth
+        {
+            get { return tileWidth / 2; }
+        }
+
+        string weekDay;
+
+        public string WeekDay
+        {
+            get { return weekDay; }
+            set
+            {
+                weekDay = value;
+                OnPropertyChanged("WeekDay");
+            }
+        }
     }
 }

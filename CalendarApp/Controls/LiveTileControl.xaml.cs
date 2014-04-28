@@ -16,22 +16,23 @@ namespace CalendarApp.Controls
 {
     public partial class LiveTileControl : UserControl
     {
+        public class Test
+        {
+            public int Day { get; set; }
+        }
+
         public LiveTileControl()
         {
             InitializeComponent();
 
-            var vm = Ioc.Get<LiveTileViewModel>();
-
             if (DesignerProperties.GetIsInDesignMode(this))
             {
-                vm.TileWidth = LiveTile.FlipMediumWidth * 653;
-                vm.TileHeight = LiveTile.FlipMediumHeight;
+                var vm = Ioc.Get<LiveTileViewModel>();
+                vm.TileWidth = LiveTileGenerator.FlipMediumWidth;
+                vm.TileHeight = LiveTileGenerator.FlipMediumHeight;
                 vm.ForegroundBrush = new SolidColorBrush(Colors.Black);
                 vm.Day = 32;
-            }
-            else
-            {
-                vm.ForegroundBrush = App.Current.Resources["PhoneForegroundBrush"] as Brush;
+                DataContext = vm;
             }
         }
     }

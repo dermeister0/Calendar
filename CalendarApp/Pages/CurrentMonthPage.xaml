@@ -29,11 +29,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-            <StackPanel>
-                <controls:MonthGrid Name="CurrentMonthGrid" />
 
-                <Button Content="Trololo" Click="Button_Click" />
-            </StackPanel>
+                <controls:MonthGrid Name="CurrentMonthGrid" />
             </Grid>
         </forty3degrees:SwipeContentControl>
     </Grid>

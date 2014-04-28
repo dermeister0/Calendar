@@ -22,5 +22,10 @@ namespace CalendarApp.ViewModels
         {
             get { return Ioc.Get<CurrentMonthViewModel>(); }
         }
+
+        public LiveTileViewModel LiveTileVM
+        {
+            get { return Ioc.Get<LiveTileViewModel>(); }
+        }
     }
 }
