@@ -48,7 +48,7 @@ namespace CalendarTileChangeAgent
         /// </remarks>
         protected override void OnInvoke(ScheduledTask task)
         {
-            new LiveTileGenerator().CreateApplicationTile();
+            Deployment.Current.Dispatcher.BeginInvoke(() => new LiveTileGenerator().CreateApplicationTile());
 
             NotifyComplete();
         }
